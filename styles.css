@@ -10,7 +10,6 @@ body {
 }
 
 .card {
-    display:flex;
     justify-content: center;
     width: 90%;
     background: linear-gradient(5deg, rgb(42, 156, 255),rgb(255, 247, 101));
@@ -39,4 +38,62 @@ body {
     flex: 1;
     margin-right: 16px;
     font-size: 18px;
+}
+
+.searchField button {
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.searchField button img{
+    width: 16px;
+}
+
+.weather-icon {
+    width: 170px;
+    margin-top: 30px;
+}
+
+.weather h1 {
+    font-size: 80px;
+    font-weight: 500;
+    color:#ebf8ff
+}
+
+.weather h2 {
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: -10px;
+    color: #ebf8ff;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 50px;
+    color:#ebf8ff;
+}
+
+.column {
+    align-items: center;
+    display: flex;
+    text-align: left;
+}
+
+.column img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.humidity, .wind {
+    font-size: 28px;
+    margin-top: 6px;
 }
