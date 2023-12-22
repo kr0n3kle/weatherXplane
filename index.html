@@ -10,8 +10,8 @@
 <body>
     <div class="card">
         <div class="searchField">
-            <input type="text" placeholder="Enter city here" spellcheck="false">
-            <button><img src="images/search.png" alt="search button image"></button> 
+            <input type="text" placeholder="Enter location here" spellcheck="false">
+            <button onclick=""><img src="images/search.png" alt="search button image"></button> 
         </div>
         <div class="weather">
             <img src="images/snow.png" class="weather-icon" alt="weather icon">
@@ -41,8 +41,8 @@
 const apiKey = "a48508e79c4c8047dfbc27ce4cffd042";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
-const searchBox = document.querySelector(".search input")
-const searchBtn = document.querySelector(".search button")
+const searchBox = document.querySelector(".search input");
+const searchBtn = document.querySelector(".search button");
 
 
 async function checkWeather(city) {
@@ -54,7 +54,7 @@ async function checkWeather(city) {
 
 
 document.querySelector(".city").innerHTML = data.name;
-document.querySelector(".temp").innerHTML = math.round(data.main.temp) + "°c";
+document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
 document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
 document.querySelector(".humidity").innerHTML = data.main.humidity + " %";
 
@@ -64,7 +64,7 @@ searchBtn.addEventListener("click", ()=> {
     checkWeather(searchBox.value);
 })
 
-checkWeather();
+
 
 </script>
 
