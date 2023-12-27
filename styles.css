@@ -13,7 +13,7 @@ body {
 .card {
     justify-content: center;
     width: 90%;
-    background: linear-gradient(35deg, rgb(42, 156, 255),rgb(255, 247, 101));
+    background: linear-gradient(35deg, rgb(42, 156, 255),rgb(255, 247, 101)); 
     max-width: 470px;
     margin: 100px auto 10vh;
     border-radius: 15px;
@@ -103,4 +103,8 @@ button:hover {
 .humidity, .wind {
     font-size: 28px;
     margin-top: 6px;
+}
+
+.weather {
+    display: none;
 }

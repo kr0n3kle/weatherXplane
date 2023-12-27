@@ -11,7 +11,7 @@
     <div class="card">
         <div class="searchField">
             <input type="text" placeholder="Enter location here" spellcheck="false">
-            <button onclick=""><img src="images/search.png" alt="search button image"></button> 
+            <button><img src="images/search.png" alt="search button image"></button> 
         </div>
         <div class="weather">
             <img src="images/snow.png" class="weather-icon" alt="weather icon">
@@ -41,32 +41,110 @@
 const apiKey = "a48508e79c4c8047dfbc27ce4cffd042";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
-const searchBox = document.querySelector(".search input");
-const searchBtn = document.querySelector(".search button");
-
+const searchBox = document.querySelector(".searchField input");
+const searchBtn = document.querySelector(".searchField button");
+const weatherIcon = document.querySelector(".weather-icon");
 
 async function checkWeather(city) {
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
     var data = await response.json();
 
-    console.log(data);
+   
 
 
 
-document.querySelector(".city").innerHTML = data.name;
-document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
-document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
-document.querySelector(".humidity").innerHTML = data.main.humidity + " %";
+    document.querySelector(".city").innerHTML = data.name;
+    document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
+    document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
+    document.querySelector(".humidity").innerHTML = data.main.humidity + " %";
 
+    if(data.weather[0].main == "Clouds") {
+        weatherIcon.src = "images/clouds.png";
+    }
+    else if(data.weather[0].main == "Clear") {
+        weatherIcon.src = "images/clear.png";
+    }
+    else if(data.weather[0].main == "Rain") {
+        weatherIcon.src = "images/rain.png";
+    }
+    else if(data.weather[0].main == "Mist") {
+        weatherIcon.src = "images/Mist.png";
+    }
+    else if(data.weather[0].main == "Snow") {
+        weatherIcon.src = "images/snow.png";
+    }
+
+    document.querySelector(".weather").style.display = "block";
 }
-
 searchBtn.addEventListener("click", ()=> {
     checkWeather(searchBox.value);
 })
 
 
+/* 
+function getWeather() {
 
-</script>
+    const apiKey = "a48508e79c4c8047dfbc27ce4cffd042";
+    const city = document.getElementById('city').value;
+
+    if (!city) {
+        alert('Please enter a city');
+        return;
+    } 
+
+    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+fetch(currentWeatherUrl)
+    .then(response => response.json())
+    .then(data => {
+        displayWeather(data);
+    })
+    .catch(error => {
+        console.error("Error retrieving data", error);
+        alert("Error retrieving data. Please try again.");
+    });
+}
+
+function displayWeather(data) {
+    const tempDivInfo = document.getElementById('temp-div');
+    const weatherInfoDiv = document.getElementById('weather-info');
+    const weatherIcon = document.getElementById('weather-icon');
+    const hourlyForecastDiv = document.getElementById('hourly-forecast');
+
+
+weatherInfoDiv.innerHTML = '';
+    hourlyForecastDiv.innerHTML = '';
+    tempDivInfo.innerHTML = '';
+
+    if (data.cod === '404') {
+        weatherInfoDiv.innerHTML = `<p>${data.message}</p>`;
+    } else {
+        const cityName = data.name;
+        const temperature = Math.round(data.main.temp - 273.15); // Convert to Celsius
+        const description = data.weather[0].description;
+        const iconCode = data.weather[0].icon;
+        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
+
+
+const temperatureHTML = `
+            <p>${temperature}°C</p>
+        `;
+
+        const weatherHtml = `
+            <p>${cityName}</p>
+            <p>${description}</p>
+        `;
+
+        tempDivInfo.innerHTML = temperatureHTML;
+        weatherInfoDiv.innerHTML = weatherHtml;
+        weatherIcon.src = iconUrl;
+        weatherIcon.alt = description;
+
+        showImage();
+    }
+}
+*/
+    </script>
 
 </body>
 </html>
