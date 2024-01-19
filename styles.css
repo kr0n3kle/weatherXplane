@@ -17,6 +17,9 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .card {
